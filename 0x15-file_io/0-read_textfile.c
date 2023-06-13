@@ -1,6 +1,5 @@
 #include "main.h"
-#include <fcntl.h>   /* for open */
-#include <unistd.h>  /* for read, close */
+#include <stdlib.h>
 
 /**
  * read_textfile - Reads a text file and prints it to the POSIX standard output
@@ -39,13 +38,3 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	return (bytes_read);
 }
 
-/**
- * _putchar - Writes a character to the standard output
- * @c: The character to write
- *
- * Return: On success, returns the character written. On failure, returns -1.
- */
-int _putchar(char c)
-{
-	return (write(STDOUT_FILENO, &c, 1));
-}
