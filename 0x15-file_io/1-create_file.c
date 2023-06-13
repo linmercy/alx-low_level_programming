@@ -4,7 +4,8 @@
 #include <sys/stat.h>  /* for S_IRUSR, S_IWUSR */
 
 /**
- * create_file - Creates a file with the specified name and writes the content to it
+ * create_file - Creates a file with the specified name and writes
+ * the content to it
  * @filename: The name of the file to create
  * @text_content: The content to write to the file (NULL-terminated string)
  *
