@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>   /* for open */
-#include <unistd.h>  /* for read, write, close */
-#include <sys/stat.h>  /* for S_IRUSR */
 #include "main.h"
-
 #define BUFFER_SIZE 1024
-
 /**
  * cp - Copies the content of one file to another file
  * @file_from: The source file
@@ -26,7 +21,6 @@ int cp(const char *file_from, const char *file_to)
 				file_from);
 		return (98);
 	}
-
 	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR |
 			S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd_to == -1)
@@ -35,7 +29,6 @@ int cp(const char *file_from, const char *file_to)
 		close(fd_from);
 		return (99);
 	}
-
 	while ((read_count = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
 		write_count = write(fd_to, buffer, read_count);
@@ -48,7 +41,6 @@ int cp(const char *file_from, const char *file_to)
 			return (99);
 		}
 	}
-
 	if (read_count == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
@@ -57,23 +49,19 @@ int cp(const char *file_from, const char *file_to)
 		close(fd_to);
 		return (98);
 	}
-
 	if (close(fd_from) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
 		close(fd_to);
 		return (100);
 	}
-
 	if (close(fd_to) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
 		return (100);
 	}
-
 	return (0);
 }
-
 /**
  * main - Entry point of the program
  * @argc: The number of command-line arguments
@@ -88,7 +76,5 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		return (97);
 	}
-
 	return (cp(argv[1], argv[2]));
 }
-
