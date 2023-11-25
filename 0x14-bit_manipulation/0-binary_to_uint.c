@@ -6,19 +6,24 @@
  * Return: The converted number, or 0 if there is one or more chars in the
  * string b that is not 0 or 1, or if b is NULL.
  */
-unsigned int binary_to_uint(const char *b) {
+unsigned int binary_to_uint(const char *b)
+{
 	if (b == NULL)
-		return 0;
+		return (0);
 	unsigned int result = 0;
-	while (*b) {
-		if (*b == '0' || *b == '1') {
+
+	while (*b)
+	{
+		if (*b == '0' || *b == '1')
+		{
 			result = result * 2 + (*b - '0');
 			b++;
-		} else {
-			return 0;
+		} else
+		{
+			return (0);
 		}
 	}
-	return result;
+	return (result);
 }
 
 /**
@@ -27,6 +32,7 @@ unsigned int binary_to_uint(const char *b) {
  *
  * Return: On success, 1. On error, -1 is returned.
  */
-int _putchar(char c) {
-	return write(1, &c, 1);
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
