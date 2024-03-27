@@ -1,26 +1,2 @@
-# Makefile for school project
-
-# Compiler
-CC := gcc
-
-# Compiler flags
-CFLAGS := -Wall -Werror -Wextra -pedantic
-
-# Source files
-SRCS := main.c school.c
-
-# Name of the executable
-TARGET := school
-
-# Rule to build the executable
-all: $(TARGET)
-
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) $^ -o $@
-
-# Clean rule
-clean:
-	rm -f $(TARGET)
-
-.PHONY: all clean
-
+all: main.c school.c
+	gcc main.c school.c -o school
